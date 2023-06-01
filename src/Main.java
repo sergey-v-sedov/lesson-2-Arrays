@@ -2,29 +2,23 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        byte[][] field = new byte[][]{
-                {0,1,0,0,0,0,0,0,0,0},
-                {0,0,1,0,0,0,1,1,1,1},
-                {0,0,1,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,1,1,1,0,0,0,0},
-                {1,1,0,0,0,0,0,0,0,0},
-                {0,0,0,0,1,0,0,0,0,0},
-                {0,0,0,0,1,0,0,0,0,0},
-                {0,0,0,0,1,0,0,0,0,1}
-        }; // 7
 
-        byte count = 0;
+        Document[] documents = new Document[] {new Document(100, 333),
+        new Document(5, 1000), new Document(777, 9)};
 
-        for(int i=0; i< field.length; i++) {
-            for(int j=0; j< field[i].length; j++) {
-                byte cell = field[i][j];
-                if(cell == 1 && (j==0 || field[i][j-1] == 0) && (i==0 || field[i-1][j] == 0)) {
-                    count++;
-                }
-            }
-        }
+        System.out.println("До сотрировки: " + Arrays.toString(documents));
 
-        System.out.println(count);
+        Arrays.sort(documents, new Document.SumComparatorAsc());
+
+        System.out.println("После сотрировки: " + Arrays.toString(documents));
+
+        // ===================================================
+
+        int[] array = new int[]{1, 44, 7, 5, 100};
+        System.out.println(Arrays.toString(array));
+        Arrays.sort(array);
+        System.out.println(Arrays.toString(array));
+        int index = Arrays.binarySearch(array, 44);
+        System.out.println(index);
     }
 }
